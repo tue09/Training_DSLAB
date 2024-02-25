@@ -110,7 +110,7 @@ def read_data(data_path):
 
 if __name__=="__main__":
     current_directory = os.getcwd()
-    print("Current Directory:", current_directory)
+    print(f'Current Directory: {current_directory}')
     data = read_data("Session_1/Regression/Data.txt")
 
     RR = Ridge_Regression()
@@ -120,18 +120,17 @@ if __name__=="__main__":
     Y_train, Y_test = data[:size_train, -1], data[size_train:, -1]
     
     LAMBDA = RR.get_the_best_LAMBDA(X_train, Y_train, num_fold=5)
-    print(LAMBDA)
 
     #W = RR.fit(X_train, Y_train, LAMBDA=0.8)
     W = RR.fit_Gradient(X_train, Y_train, LAMBDA=LAMBDA, learning_rate=0.001, max_num_epoch=500, batch_size=128)
     Y_Predict = RR.predict(X_test, W)
-    print("LAMBDA =", LAMBDA)
-    print("RSS =", end = '')
-    print(RR.computeRss(Y_test, Y_Predict))
+    Loss = RR.computeRss(Y_test, Y_Predict)
+    print(f'LAMBDA: {LAMBDA}')
+    print(f'RSS: {Loss}')
 
     with open("Session_1/Regression/Result.txt", "w") as f:
         f.write(f'{datetime.now()}\n')
         f.write(f'Best LAMBDA: {LAMBDA}\n')
-        f.write(f'RSS: {RR.computeRss(Y_test, Y_Predict)}')
+        f.write(f'RSS: {Loss}')
     print("Done !")
 

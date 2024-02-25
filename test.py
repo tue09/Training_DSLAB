@@ -1,6 +1,12 @@
-import numpy as np
+from nltk.stem.porter import PorterStemmer
 
-arr = np.array([1, 2, 3, 4, 5, 6, 7])
-idex = [0, 1, 2]
-print(arr[idex])
+# Tạo một instance của PorterStemmer.
+stemmer = PorterStemmer()
 
+# Từ cần stem.
+word = "gone"
+
+# Sử dụng phương thức stem().
+stemmed_word = stemmer.stem(word)
+
+print(stemmed_word)  # In ra: "run"
