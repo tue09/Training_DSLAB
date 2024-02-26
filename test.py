@@ -1,12 +1,10 @@
-from nltk.stem.porter import PorterStemmer
+from collections import defaultdict
 
-# Tạo một instance của PorterStemmer.
-stemmer = PorterStemmer()
-
-# Từ cần stem.
-word = "gone"
-
-# Sử dụng phương thức stem().
-stemmed_word = stemmer.stem(word)
-
-print(stemmed_word)  # In ra: "run"
+doc_count = defaultdict(int)
+doc_count['a'] += 1
+doc_count['b'] += 5
+doc_count['5'] -= 4
+doc_count['@'] += 2
+doc_count['abc'] += 5
+doc_count['abc'] -= 2
+print(doc_count)  # In ra: 0
