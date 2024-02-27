@@ -1,10 +1,10 @@
-from collections import defaultdict
+import numpy as np
 
-doc_count = defaultdict(int)
-doc_count['a'] += 1
-doc_count['b'] += 5
-doc_count['5'] -= 4
-doc_count['@'] += 2
-doc_count['abc'] += 5
-doc_count['abc'] -= 2
-print(doc_count)  # In ra: 0
+# Tạo một mảng 1D
+a = np.array([1, 2, 3, 4, 5, 6])
+
+# Sử dụng reshape(1, -1)
+b = a.reshape(2, -1)
+
+print(b)
+# Kết quả: [[1 2 3 4 5 6]]
