@@ -1,10 +1,13 @@
 import numpy as np
+from scipy.sparse import csr_matrix
 
-# Tạo một mảng 1D
-a = np.array([1, 2, 3, 4, 5, 6])
+# Tạo một mảng numpy
+arr = np.array([[0, 0, 0, 0, 0, 1, 1, 0, 2], [0, 2, 5, 0, 6, 0, 0, 4, 0]])
 
-# Sử dụng reshape(1, -1)
-b = a.reshape(2, -1)
+print(arr)
 
-print(b)
-# Kết quả: [[1 2 3 4 5 6]]
+# Chuyển đổi mảng numpy thành ma trận thưa CSR
+sparse_arr = csr_matrix(arr)
+
+# In ra ma trận thưa CSR
+print(sparse_arr)
